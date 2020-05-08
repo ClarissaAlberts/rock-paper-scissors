@@ -7,7 +7,92 @@
 
 
   <script>
+      
+let playerSelection;
+let computerSelection;
+let computerScore = 0;
+let playerScore = 0;
 
+    //A function that picks a random string out of three (i.e: rock, paper, or scissors)
+    function computerPlay() {
+        let arr = ["rock", "paper", "scissors"];
+        choice = arr[Math.floor(Math.random() * arr.length)];
+        return choice;
+    }
+  
+      //A function that plays a single round of the game
+    function playRound(playerSelection, computerSelection) {
+      //Takes player's input and converts it to lowercase for string comparison
+      playerSelection = prompt("Rock, paper, or scissors?\n");
+      playerSelection = playerSelection.toLowerCase();
+
+      //Generate's the computer's selection
+      computerSelection = computerPlay();
+      
+        //All below if-statements compare the player and computers selections
+        //It also adds 1 to the score, depending on which selection wins
+        if (playerSelection === computerSelection) {
+          console.log("You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". No points for anyone.");
+        }
+        else if (playerSelection === "rock" && computerSelection === "scissors") {
+          playerScore = playerScore + 1;
+          console.log("Rock beats scissors.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for you!");
+        }
+        else if (playerSelection === "rock" && computerSelection === "paper") {
+          computerScore = computerScore + 1;
+          console.log("Paper beats rock.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for the computer!");
+        }
+        else if (playerSelection === "scissors" && computerSelection === "paper") {
+          playerScore = playerScore + 1;
+          console.log("Scisscors beats paper.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for you!");
+        }
+        else if (playerSelection === "scissors" && computerSelection === "rock") {
+          computerScore = computerScore + 1;
+          console.log("Rock beats scissors.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for the computer!");
+        }
+        else if (playerSelection === "paper" && computerSelection === "rock") {
+          playerScore = playerScore + 1;
+          console.log("Paper beats rock.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for you!");
+        }
+        else if (playerSelection === "paper" && computerSelection === "scissors") {
+          computerScore = computerScore + 1;
+          console.log("Scissors beats paper.\n" + "You chose " + playerSelection + 
+          " and the computer chose " + computerSelection + ". 1 point for the computer!");
+        }
+        //This else-statement catches invalid selections and then reruns the function
+        else {
+          console.log("Hey, that's not a valid input.");
+          playRound(playerSelection, computerSelection);
+        }
+    }
+      
+      //A function that plays 5 rounds of the game
+    function game(){
+        for (let times = 0; times < 5; times++) {
+          playRound(playerSelection, computerSelection);
+        }
+    }
+      
+//Runs game
+game();
+
+//Calculates score and gives win/lose message
+if (playerScore > computerScore) {
+  console.log("\nYou won!\nYour score: " + playerScore + "\nComputer's score: " + computerScore);
+  }
+else if (computerScore > playerScore) {
+  console.log("\nYou lost!\nYour score: " + playerScore + "\nComputer's score: " + computerScore);
+ }
+else {
+  console.log("\nIt's a draw!\nYour score: " + playerScore + "\nComputer's score: " + computerScore);
+  }
+    
 
   </script>
     
