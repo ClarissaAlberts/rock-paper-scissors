@@ -40,4 +40,5 @@ main button:hover {
     background-color: #556388;
     margin: auto;
     height: 400px;
+    overflow: auto;
 }

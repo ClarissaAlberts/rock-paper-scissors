@@ -94,7 +94,9 @@ const resultsWindow = document.querySelector('.results');
           " and the computer chose " + computerSelection + ". 1 point for the computer!";
             resultsWindow.appendChild(playerPaperLose);
         }
+        
         scoreAnnounce();
+        updateScroll();
         
     }
       
@@ -108,21 +110,32 @@ function scoreAnnounce() {
         const playerWon = document.createElement('h3');
         playerWon.textContent = "\nYou won!\nYour score: " + playerScore + "\nComputer's score: " + computerScore;
         resultsWindow.appendChild(playerWon);
+        currentRound = 0;
+        playerScore = 0;
+        computerScore = 0;
     }
         
     else if (computerScore > playerScore) {
         const playerLost = document.createElement('h3');
         playerLost.textContent = "\nYou lost!\nYour score: " + playerScore + "\nComputer's score: " + computerScore;
         resultsWindow.appendChild(playerLost);
+        currentRound = 0;
+        playerScore = 0;
+        computerScore = 0;
  }
     else {
         const playerDraw = document.createElement('h3');
         playerDraw.textContent = "\nIt's a draw!\nYour score: " + playerScore + "\nComputer's score: " + computerScore;
         resultsWindow.appendChild(playerDraw);
+        currentRound = 0;
+        playerScore = 0;
+        computerScore = 0;
   }
     }
 
 }
 
-
+function updateScroll(){
+    resultsWindow.scrollTop = resultsWindow.scrollHeight;
+}
 

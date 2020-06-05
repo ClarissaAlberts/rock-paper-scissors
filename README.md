@@ -1,1 +1,1 @@
-Primitive Rock, Paper, Scissors game.
+A Rock, Paper, Scissors game with a GUI created in HTML/CSS.
